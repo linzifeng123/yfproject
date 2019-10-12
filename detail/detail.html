@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link href="detail.css" type="text/css" rel="Stylesheet" />
+  <link href="common.css" type="text/css" rel="Stylesheet" />
+ </head>
+ <body>
+  <div id="preview">
+	<div id="mediumDiv">
+		<img id="mImg" src="images/chi_robot/product-s1-m.jpg"/>
+		<div id="mask"></div>
+		<div id="superMask"></div>
+	</div>
+	 <!--<div id="largeDiv" style="background-image:url(images/chi_robot/product-s1-m.jpg)"></div>-->
+	<h1>
+		<a class="backward_disabled" id="move_left" style="display:none;"></a>
+		<a class="forward" id="move_right" style="display:none"></a>
+		<ul id="icon_list">
+			<li><img src="images/chi_robot/product-s1.jpg" /></li>
+			<li><img src="images/chi_robot/product-s2.jpg" /></li>
+			<li><img src="images/chi_robot/product-s3.jpg" /></li>
+			<li><img src="images/chi_robot/product-s4.jpg" /></li>
+			<li><img src="images/chi_robot/product-s5.jpg" /></li>
+		</ul>
+	</h1>
+</div>
+  <script src="jquery-1.11.3.js"></script>
+  <script src="jd_detail.js"></script>
+  <script type="text/javascript">
+      var lis = icon_list.getElementsByTagName('li').length;
+	  var move_left = document.getElementById('move_left');
+	  var move_right = document.getElementById('move_right');
+	  if(lis > 5){
+	    move_left.style.display = "block"; 
+		move_right.style.display = "block"; 
+	  }
+  </script>
+ </body>
+</html>
