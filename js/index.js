@@ -107,76 +107,54 @@ $('.menuclick').click(function(){
     var mao = $("#scroll" + index); //获得锚点
     if (mao.length > 0) {//判断对象是否存在
         var pos = mao.offset().top;
-        $("html,body").animate({ scrollTop: pos }, 2000);
+        var poshigh = mao.height();
+        $("html,body").animate({ scrollTop: pos-200 }, 2000);
     }
-})
-$('#main').scroll(function(e){
-    let scrollTop=$(e.target).scrollTop();
-   let index = $('#main').index();
-   alert(index)
-    setTimeout(()=>{
-        menuState(scrollTop);
-    },2000)
 
+
+    let menuclick = $('.menuclick');
+    for(let i=0;i<menuclick.length;i++){
+        let sibcolor = $('.menuclick:eq('+i+')').attr('alt');
+        $('.menuclick:eq('+i+')').css({"background":"","color":sibcolor});
+    }
+
+    let selfcolor = $(this).attr('alt');
+    $(this).css({"background":selfcolor,"color":"#fff"});
+
+});
+$('#rptop').click(function(){
+    $("html,body").animate({ scrollTop: 0 }, 2000);
+})
+$(document).scroll(function(e){
+    let scrollTop=$(e.target).scrollTop();
+
+   menuState(scrollTop);
 });
 
 //根据高度滚动改变状态
 function menuState(scrollTop){
-    if(scrollTop<450){
-        $("#main_menu").css("display","none");
-    }
-    if(scrollTop>450){
-        $("#main_menu").css("display","block");
-        main_menu.style.position="fixed";
-        top_main.style.zIndex="8";
-    }
-    if(scrollTop>450&&scrollTop<731){//第一层
-        $("#main_menu>li:eq(0)").css({"background":"#FE4200","color":"white"});
-        $("#main_menu>li:eq(1)").css({"background":"","color":"#FF00BC"});
-    }
-    if(scrollTop>731&&scrollTop<1280){//第二层
-        $("#main_menu>li:eq(0)").css({"background":"","color":"#FE4200"});
-        $("#main_menu>li:eq(1)").css({"background":"#FF00BC","color":"white"});
-        $("#main_menu>li:eq(2)").css({"background":"","color":"#8E00FF"});
-    }
-    if(scrollTop>1270&&scrollTop<1401){//第三层
-        $("#main_menu>li:eq(1)").css({"background":"","color":"#FF00BC"});
-        $("#main_menu>li:eq(2)").css({"background":"#8E00FF","color":"white"});
-        $("#main_menu>li:eq(3)").css({"background":"","color":"#000AFF"});
-    }
-    if(scrollTop>1401&&scrollTop<1701){//第四层
-        $("#main_menu>li:eq(2)").css({"background":"","color":"#8E00FF"});
-        $("#main_menu>li:eq(3)").css({"background":"#000AFF","color":"white"});
-        $("#main_menu>li:eq(4)").css({"background":"","color":"#0095FF"});
-    }
-    if(scrollTop>1701&&scrollTop<1990){//第五层
-        $("#main_menu>li:eq(3)").css({"background":"","color":"#000AFF"});
-        $("#main_menu>li:eq(4)").css({"background":"#0095FF","color":"white"});
-        $("#main_menu>li:eq(5)").css({"background":"","color":"#00FFA7"});
-    }
-    if(scrollTop>1982&&scrollTop<2260){//第六层
-        $("#main_menu>li:eq(4)").css({"background":"","color":"#0095FF"});
-        $("#main_menu>li:eq(5)").css({"background":"#00FFA7","color":"white"});
-        $("#main_menu>li:eq(6)").css({"background":"","color":"#00FF12"});
-    }
-    if(scrollTop>2264&&scrollTop<2521){//第七层
-        $("#main_menu>li:eq(5)").css({"background":"","color":"#00FFA7"});
-        $("#main_menu>li:eq(6)").css({"background":"#00FF12","color":"white"});
-        $("#main_menu>li:eq(7)").css({"background":"","color":"#DDC69C"});
-    }
-    if(scrollTop>2745&&scrollTop<2754){//第八层
-        $("#main_menu>li:eq(6)").css({"background":"","color":"#00FF12"});
-        $("#main_menu>li:eq(7)").css({"background":"#DDC69C","color":"white"});
-        $("#main_menu>li:eq(8)").css({"background":"","color":"#FF6F00"});
-    }
-    if(scrollTop>2759){//第九层
-        $("#main_menu>li:eq(7)").css({"background":"","color":"#DDC69C"});
-        $("#main_menu>li:eq(8)").css({"background":"#FF6F00","color":"white"});
-    }
-    if(scrollTop>2821){//恢复第九层
-        $("#main_menu>li:eq(8)").css({"background":"","color":"#FF6F00"});
-        /*$("#main_menu").css("display","none");*/
-    }
+    let menuclick = $('.menuclick');
+    $('.prolist').mouseover(function () {
+        for(let i=0;i<menuclick.length;i++){
+            let sibcolor = $('.menuclick:eq('+i+')').attr('alt');
+            $('.menuclick:eq('+i+')').css({"background":"","color":sibcolor});
+        }
+        let index = $(this).index()-2;
+        console.log(index);
+        let selfcolor = $('.menuclick:eq('+index+')').attr('alt');
+        $('.menuclick:eq('+index+')').css({"background":selfcolor,"color":"#fff"});
+    })
+    $('.prolist').mouseenter(function () {
+        for(let i=0;i<menuclick.length;i++){
+            let sibcolor = $('.menuclick:eq('+i+')').attr('alt');
+            $('.menuclick:eq('+i+')').css({"background":"","color":sibcolor});
+        }
+        let index = $(this).index()-2;
+        console.log(index);
+        let selfcolor = $('.menuclick:eq('+index+')').attr('alt');
+        $('.menuclick:eq('+index+')').css({"background":selfcolor,"color":"#fff"});
+    })
+ 
 }
 
 //搜索获得焦点触发事件和失去焦点触发事件
