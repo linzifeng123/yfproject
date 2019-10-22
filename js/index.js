@@ -106,6 +106,7 @@ $(document).scroll(function(e){
         $('#top_main').addClass('topmain');
         $('#logo').addClass('logotop');
         $('#main_menu').css('display','block');
+
     }
     else{
         $('#top_main').removeClass('topmain');
@@ -115,7 +116,8 @@ $(document).scroll(function(e){
     }
     menuState();
 });
-
+let selfcolor = $('.menuclick:eq(0)').attr('alt');
+$('.menuclick:eq(0)').css({"background":selfcolor,"color":"#fff"});
 //根据高度滚动改变状态
 function menuState(){
     let menuclick = $('.menuclick');
