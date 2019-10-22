@@ -102,7 +102,7 @@ $(document).scroll(function(e){
     let scrollTop=$(e.target).scrollTop();
     let scroll1 = $("#scroll1").offset().top;
     console.log(scrollTop)
-    if(scrollTop > scroll1-220) {
+    if(scrollTop > scroll1-250) {
         $('#top_main').addClass('topmain');
         $('#logo').addClass('logotop');
         $('#main_menu').css('display','block');
