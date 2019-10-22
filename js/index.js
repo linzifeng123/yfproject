@@ -73,35 +73,7 @@ log_upwd.onblur = function(){
 }
 
 //页面滚动高度时显示搜索栏跟滚
-$(document).scroll(function(e){
-    var scrollTop=$(e.target).scrollTop();
-    if(scrollTop>20) {
-        $('#top_main').addClass('topmain');
-        $('#logo').addClass('logotop');
-        $('#rtop').css('position','fixed');
-        $('#rtop').css('display','block');
-    }
-    else{
-        $('#top_main').removeClass('topmain');
-        $('#logo').removeClass('logotop');
-        $('#rtop').css('position','absolute');
-        $('#rtop').css('display','none');
 
-    }
-
-});
-var colorstate=[
-    {colorlist:560},//1
-    {colorlist:820},//2
-    {colorlist:1280},//3
-    {colorlist:1530},//4
-    {colorlist:1980},//5
-    {colorlist:2250},//6
-    {colorlist:2500},//7
-    {colorlist:2750},//8
-    {colorlist:2760},//9
-    {colorlist:0}//9
-]
 $('.menuclick').click(function(){
     let index = $(this).index()+1;
     var mao = $("#scroll" + index); //获得锚点
@@ -125,14 +97,27 @@ $('.menuclick').click(function(){
 $('#rptop').click(function(){
     $("html,body").animate({ scrollTop: 0 }, 2000);
 })
+
 $(document).scroll(function(e){
     let scrollTop=$(e.target).scrollTop();
+    let scroll1 = $("#scroll1").offset().top;
+    console.log(scrollTop)
+    if(scrollTop > scroll1-220) {
+        $('#top_main').addClass('topmain');
+        $('#logo').addClass('logotop');
+        $('#main_menu').css('display','block');
+    }
+    else{
+        $('#top_main').removeClass('topmain');
+        $('#logo').removeClass('logotop');
+        $('#main_menu').css('display','none');
 
-   menuState(scrollTop);
+    }
+    menuState();
 });
 
 //根据高度滚动改变状态
-function menuState(scrollTop){
+function menuState(){
     let menuclick = $('.menuclick');
     $('.prolist').mouseover(function () {
         for(let i=0;i<menuclick.length;i++){
@@ -150,11 +135,10 @@ function menuState(scrollTop){
             $('.menuclick:eq('+i+')').css({"background":"","color":sibcolor});
         }
         let index = $(this).index()-2;
-        console.log(index);
         let selfcolor = $('.menuclick:eq('+index+')').attr('alt');
         $('.menuclick:eq('+index+')').css({"background":selfcolor,"color":"#fff"});
     })
- 
+
 }
 
 //搜索获得焦点触发事件和失去焦点触发事件
