@@ -730,7 +730,7 @@
   top:50%;
   left:1px;
   padding-top:4px;
-  display:block;
+  display:none;
 }
 #main>ul.main_menu>li{
    margin-top:20px;
