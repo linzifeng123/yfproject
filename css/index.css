@@ -727,13 +727,13 @@
   height:auto;
   z-index:10;
   position:fixed;
-  top:50%;
+  top:20%;
   left:1px;
   padding-top:4px;
   display:none;
 }
 #main>ul.main_menu>li{
-   margin-top:20px;
+   margin-top:40%;
 }
 
 /**********购物指南，配送方式等**********/

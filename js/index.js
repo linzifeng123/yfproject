@@ -98,9 +98,27 @@ $('#rptop').click(function(){
     $("html,body").animate({ scrollTop: 0 }, 2000);
 })
 
+
 $(document).scroll(function(e){
     let scrollTop=$(e.target).scrollTop();
     let scroll1 = $("#scroll1").offset().top;
+    let windHeight = window.screen.height;
+    let h =   scroll1/3;
+
+
+    if(windHeight>900){
+        h = 40;
+    }
+    if(windHeight>800){
+        h = 30;
+    }
+    if(windHeight>700){
+        h = 20;
+    }
+    if(windHeight<700){
+        h = 15;
+    }
+    $('.main_menu li').css('margin-top',h+"%");
     console.log(scrollTop)
     if(scrollTop > scroll1-250) {
         $('#top_main').addClass('topmain');
@@ -114,6 +132,7 @@ $(document).scroll(function(e){
         $('#main_menu').css('display','none');
 
     }
+
     menuState();
 });
 let selfcolor = $('.menuclick:eq(0)').attr('alt');
