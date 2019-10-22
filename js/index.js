@@ -103,16 +103,21 @@ var colorstate=[
     {colorlist:0}//9
 ]
 $('.menuclick').click(function(){
-    let index = $(this).index();
-    let menuscroll = colorstate[index].colorlist;
-    $('html,body').animate({scrollTop:menuscroll},'slow');
-    menuState(menuscroll);
-
-    console.log("index",index);
+    let index = $(this).index()+1;
+    var mao = $("#scroll" + index); //获得锚点
+    if (mao.length > 0) {//判断对象是否存在
+        var pos = mao.offset().top;
+        $("html,body").animate({ scrollTop: pos }, 2000);
+    }
 })
-$(document).scroll(function(e){
+$('#main').scroll(function(e){
     let scrollTop=$(e.target).scrollTop();
-    menuState(scrollTop);
+   let index = $('#main').index();
+   alert(index)
+    setTimeout(()=>{
+        menuState(scrollTop);
+    },2000)
+
 });
 
 //根据高度滚动改变状态
